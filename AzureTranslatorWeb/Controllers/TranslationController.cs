@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AzureTranslatorWeb.Models;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -98,34 +99,6 @@ namespace AzureTranslatorWeb.Controllers
             // Actualiza el historial del chat y retorna la vista.
             ViewBag.ChatHistory = chatHistory;
             return View();
-        }
-
-        // Clase para modelar la estructura de la respuesta de la API de Azure Translator.
-        public class TranslationResult
-        {
-            public DetectedLanguage DetectedLanguage { get; set; } // Información sobre el idioma detectado.
-            public Translation[] Translations { get; set; } // Lista de traducciones.
-        }
-
-        // Clase para representar el idioma detectado en el texto de entrada.
-        public class DetectedLanguage
-        {
-            public string Language { get; set; } // Código del idioma detectado (e.g., "es" para español).
-            public float Score { get; set; } // Confianza de la detección (valor entre 0 y 1).
-        }
-
-        // Clase para representar una traducción realizada por la API.
-        public class Translation
-        {
-            public string Text { get; set; } // Texto traducido.
-            public string To { get; set; } // Idioma de destino al que se tradujo.
-        }
-
-        // Clase para almacenar los mensajes del chat.
-        public class ChatMessage
-        {
-            public string UserMessage { get; set; } // Mensaje original del usuario.
-            public string TranslatedMessage { get; set; } // Mensaje traducido por la API.
         }
     }
 }
